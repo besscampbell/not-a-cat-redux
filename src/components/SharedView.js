@@ -63,9 +63,9 @@ class SharedView extends React.Component {
   }
 
 
-  handleRestock = () => {
+  handleRestock = (itemId) => {
     const { dispatch } = this.props;
-    const { id, name, description, quantity } = this.state.selectedItem;
+    const { id, name, description, quantity } = this.props.masterItemList[itemId];
     const action = {
       type: 'ADD_OR_UPDATE_ITEM',
       id: id,
@@ -76,12 +76,12 @@ class SharedView extends React.Component {
     dispatch(action);
     const updatedItem = this.props.masterItemList[id]
     console.log(updatedItem);
-    this.setState({ selectedItem: null });
+    this.setState({ selectedItem: updatedItem });
   };
 
-  handleBuy = () => {
+  handleBuy = (itemId) => {
     const { dispatch } = this.props;
-    const { id, name, description, quantity } = this.state.selectedItem;
+    const { id, name, description, quantity } = this.props.masterItemList[itemId];
     const action = {
       type: 'ADD_OR_UPDATE_ITEM',
       id: id,
@@ -92,8 +92,8 @@ class SharedView extends React.Component {
     dispatch(action);
     const updatedItem = this.props.masterItemList[id]
     console.log(updatedItem);
-    this.setState({ selectedItem: null });
-    // this.setState({selectedItem: updatedItem});
+    // this.setState({ selectedItem: null });
+    this.setState({selectedItem: updatedItem});
   };
 
   handleDeletingItem = (id) => {
