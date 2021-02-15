@@ -33,4 +33,22 @@ describe('itemListReducer', () => {
       }
     });
   });
+  test('Should correctly update an item', () => {
+    const { name, description, quantity, id } = itemData;
+    action = {
+      type: 'ADD_OR_UPDATE_ITEM',
+      name: "New Cat Filter",
+      description: "Different Description",
+      quantity: 100,
+      id: id
+    }
+    expect(itemListReducer({}, action)).toEqual({
+      [id]: {
+        name: "New Cat Filter",
+        description: "Different Description",
+        quantity: 100,
+        id: id
+      }
+    })
+  })
 });
