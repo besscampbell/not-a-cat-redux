@@ -6,7 +6,7 @@ function ItemList(props) {
   return (
     <>
       <hr/>
-      {props.itemList.map((listing) => 
+      {Object.values(props.itemList).map((listing) => 
         <Listing 
           whenItemClicked = { props.onItemSelection }
           name={listing.name}
@@ -21,7 +21,7 @@ function ItemList(props) {
 }
 
 ItemList.propTypes = {
-  itemList: PropTypes.array,
+  itemList: PropTypes.object,
   onItemSelection: PropTypes.func
 }
 
