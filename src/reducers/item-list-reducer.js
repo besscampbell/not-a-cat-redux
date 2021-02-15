@@ -8,8 +8,12 @@ export default (state = {}, action) => {
           description: description,
           quantity: quantity,
           id: id
-        }
+        },
       });
+    case 'DELETE_ITEM':
+      let newState = {...state};
+      delete newState[id];
+      return newState;
     default:
       return state;
     }
